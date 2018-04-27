@@ -16,12 +16,12 @@ public class Frog {
 	
 	}
 
-	public void frog(int width, int height) {
+	public void frog(int x, int y) {
 		
 		frogHeight = (float) (parent.pixelHeight / 25.0);
 		frogWidth = (float) (parent.pixelWidth / 25.0 * main.Main.widthMultiplier);
 		parent.fill(153, 255, 51);
-		parent.rect(width, height, frogWidth, frogHeight);
+		parent.rect(x, y, frogWidth, frogHeight);
 		
 	} 
 	
