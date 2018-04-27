@@ -4,7 +4,7 @@ import processing.core.PApplet;
 import shapes.Frog;
 import input.Hopping;
 import shapes.Vehicles;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Main extends PApplet{
@@ -13,7 +13,7 @@ public class Main extends PApplet{
 	Vehicles cars = new Vehicles(this);
 	Hopping frogMovement = new Hopping(this);
 	public static int frogX, frogY;
-	
+
 	public static boolean isAPressed = false;
 	public static boolean isDPressed = false;
 	public static boolean isWPressed = false;
@@ -24,7 +24,6 @@ public class Main extends PApplet{
 	public static boolean isKPressed = false;
 	public static boolean isJPressed = false;
 	public static boolean isLPressed = false;
-
 
 
 	public static float widthMultiplier;
@@ -47,33 +46,32 @@ public class Main extends PApplet{
 		frogX = pixelWidth / 2;
 		frogY = pixelHeight * 17 / 20;
 
-		widthMultiplier = (float) ( (double) pixelWidth / (double) pixelHeight == 4.0 / 3.0 ? 3.0 / 4.0 : 9.0 / 16.0);
-		
+		widthMultiplier = (float) ((float) pixelWidth / (float) pixelHeight == 4.0 / 3.0 ? 3.0 / 4.0 : 9.0 / 16.0);
+
 	}
 
 	public void draw() {
-		
+
 		background(200);
 		frogOne.frog(frogX, frogY);
 		Hopping.frogMovement();
-		
+
+
 		for(float i = 1; i < 9; i++) {
-			
-			//Math.random();
-			//Random carWidth = new Random();
-			//carWidth.ints(10, 25);
-			//int spacing = carWidth.nextInt();
-			
-			cars.vehicles(i, 150, pixelWidth / 10);
+
+			int spacing = ThreadLocalRandom.current().nextInt(250, 751);
+			System.out.println(spacing);
+			System.out.println(spacing);
+			cars.vehicles(i, spacing, pixelWidth / 10);
 		}
-		
-		
+
+
 
 
 	}
 
 	public void keyPressed() {
-		
+
 		if (keyCode == SHIFT) isShiftPressed = true;
 		if (keyCode == 'A' || keyCode == LEFT) isAPressed = true;
 		if (keyCode == 'D' || keyCode == RIGHT) isDPressed = true;
@@ -87,7 +85,7 @@ public class Main extends PApplet{
 	}
 
 	public void keyReleased() {
-		
+
 		if (keyCode == SHIFT) isShiftPressed = false;
 		if (keyCode == 'A' || keyCode == LEFT) isAPressed = false;
 		if (keyCode == 'D' || keyCode == RIGHT) isDPressed = false;
@@ -97,7 +95,7 @@ public class Main extends PApplet{
 		if (keyCode == 'K') isKPressed = false;
 		if (keyCode == 'J') isJPressed = false;
 		if (keyCode == 'L') isLPressed = false;
-		
+
 
 	}
 

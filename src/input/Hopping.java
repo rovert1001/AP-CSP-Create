@@ -7,14 +7,14 @@ import static main.Main.*;
 
 public class Hopping {
 
-	public static float frogYVel, frogXVel;
+	private static float frogYVel, frogXVel;
 
 	private static PApplet parent;
 
-	public static boolean hasHopped = false;
+	private static boolean hasHopped = false;
 
-	public static long deltaTime = 0;
-	public static long startTime;
+	private static long deltaTime;
+	private static long startTime;
 
 
 	public Hopping(PApplet a) {
