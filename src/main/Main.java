@@ -11,7 +11,8 @@ public class Main extends PApplet{
 
 	Frog frogOne = new Frog(this);
 	Vehicles cars = new Vehicles(this);
-	public static float frogX, frogY;
+	Hopping frogMovement = new Hopping(this);
+	public static int frogX, frogY;
 	
 	public static boolean isAPressed = false;
 	public static boolean isDPressed = false;
@@ -55,7 +56,6 @@ public class Main extends PApplet{
 		background(200);
 		frogOne.frog(frogX, frogY);
 		Hopping.frogMovement();
-
 		
 		for(float i = 1; i < 9; i++) {
 			
