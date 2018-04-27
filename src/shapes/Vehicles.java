@@ -14,7 +14,7 @@ public class Vehicles {
 	public void vehicles(float yLevel, float width, float spacing) {
 		parent.fill(153, 255, 51);
 		for (double i = 0; i < (float) parent.pixelWidth * 12.0 / 10.0; i += width + spacing) {
-			parent.rect(3, (float) parent.pixelHeight * yLevel / 10, width, (float) parent.pixelHeight / 25);
+			parent.rect(3, (float) parent.pixelHeight * yLevel / 10, /*width*/ parent.pixelWidth, (float) parent.pixelHeight / 25);
 		}
 		
 	}

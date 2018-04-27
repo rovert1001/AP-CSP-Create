@@ -45,7 +45,7 @@ public class Main extends PApplet{
 	public void setup() {
 
 		frogX = pixelWidth / 2;
-		frogY = pixelHeight * 9 / 10;
+		frogY = pixelHeight * 17 / 20;
 
 		widthMultiplier = (float) ( (double) pixelWidth / (double) pixelHeight == 4.0 / 3.0 ? 3.0 / 4.0 : 9.0 / 16.0);
 		
