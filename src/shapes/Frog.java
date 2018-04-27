@@ -16,7 +16,7 @@ public class Frog {
 	
 	}
 
-	public void frog(int x, int y) {
+	public void frog(float x, float y) {
 		
 		frogHeight = (float) (parent.pixelHeight / 25.0);
 		frogWidth = (float) (parent.pixelWidth / 25.0 * main.Main.widthMultiplier);

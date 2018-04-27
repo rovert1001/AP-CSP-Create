@@ -2,15 +2,16 @@ package main;
 
 import processing.core.PApplet;
 import shapes.Frog;
+import input.Hopping;
 import shapes.Vehicles;
 import java.util.Random;
-import java.util.stream.IntStream;
+
 
 public class Main extends PApplet{
 
 	Frog frogOne = new Frog(this);
 	Vehicles cars = new Vehicles(this);
-	public static int frogX, frogY;
+	public static float frogX, frogY;
 	
 	public static boolean isAPressed = false;
 	public static boolean isDPressed = false;
@@ -53,6 +54,8 @@ public class Main extends PApplet{
 		
 		background(200);
 		frogOne.frog(frogX, frogY);
+		Hopping.frogMovement();
+
 		
 		for(float i = 1; i < 9; i++) {
 			
