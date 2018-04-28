@@ -60,8 +60,6 @@ public class Main extends PApplet{
 		for(float i = 1; i < 9; i++) {
 
 			int spacing = ThreadLocalRandom.current().nextInt(125, 501);
-			System.out.println(spacing);
-			System.out.println(spacing);
 			cars.vehicles(i, spacing, pixelWidth / 10);
 		}
 
