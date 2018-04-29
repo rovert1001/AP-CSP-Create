@@ -64,8 +64,7 @@ public class Movement {
 			
 			if (xMatch && yMatch && lives > 0) {
 				lives--;
-				reset();
-				points--;
+				reset(false);
 			}
 			else if (xMatch && yMatch) System.exit(0);
 

@@ -5,12 +5,11 @@ import processing.core.PApplet;
 import static main.Drawing.reset;
 import static main.Drawing.texts;
 
+public class Main extends PApplet {
 
-public class Main extends PApplet{
-	
 	Drawing drawing = new Drawing(this);
 	Movement movement = new Movement(this);
-	
+
 	public static int frogX, frogY;
 	public static int points, lives;
 
@@ -19,9 +18,8 @@ public class Main extends PApplet{
 	public static boolean isWPressed = false;
 	public static boolean isSPressed = false;
 
-
 	public static float widthMultiplier;
-	
+
 	public static int[] length = new int[8], spacing = new int[8], velocity = new int[8];
 
 	public static void main(String[] args) {
@@ -33,14 +31,14 @@ public class Main extends PApplet{
 	public void settings() {
 
 		fullScreen();
-		//size(400, 300);
+		// size(400, 300);
 
 	}
 
 	public void setup() {
-		
+
 		widthMultiplier = (float) ((float) pixelWidth / (float) pixelHeight == 4.0 / 3.0 ? 3.0 / 4.0 : 9.0 / 16.0);
-		reset();
+		reset(false);
 		points = 0;
 		lives = 3;
 		textSize(32);
@@ -51,36 +49,42 @@ public class Main extends PApplet{
 		background(200);
 		drawing.frog(frogX, frogY);
 		movement.frogMovement();
-		
 
-		for(int i = 0; i < length.length; i++) {
+		for (int i = 0; i < length.length; i++) {
 
 			drawing.vehicleDraw(velocity[i], i + 1, length[i], spacing[i], i);
 		}
-		
-		if (frogY <= pixelWidth * 1 / 40) reset();
-		
+
+		if (frogY <= pixelWidth * 1 / 40)
+			reset(true);
+
 		texts();
-		
+
 	}
 
-	
-	
 	public void keyPressed() {
 
-		if (keyCode == 'A' || keyCode == LEFT) isAPressed = true;
-		if (keyCode == 'D' || keyCode == RIGHT) isDPressed = true;
-		if (keyCode == 'W' || keyCode == UP) isWPressed = true;
-		if (keyCode == 'S' || keyCode == DOWN) isSPressed = true;
+		if (keyCode == 'A' || keyCode == LEFT)
+			isAPressed = true;
+		if (keyCode == 'D' || keyCode == RIGHT)
+			isDPressed = true;
+		if (keyCode == 'W' || keyCode == UP)
+			isWPressed = true;
+		if (keyCode == 'S' || keyCode == DOWN)
+			isSPressed = true;
 
 	}
 
 	public void keyReleased() {
 
-		if (keyCode == 'A' || keyCode == LEFT) isAPressed = false;
-		if (keyCode == 'D' || keyCode == RIGHT) isDPressed = false;
-		if (keyCode == 'W' || keyCode == UP) isWPressed = false;
-		if (keyCode == 'S' || keyCode == DOWN) isSPressed = false;
+		if (keyCode == 'A' || keyCode == LEFT)
+			isAPressed = false;
+		if (keyCode == 'D' || keyCode == RIGHT)
+			isDPressed = false;
+		if (keyCode == 'W' || keyCode == UP)
+			isWPressed = false;
+		if (keyCode == 'S' || keyCode == DOWN)
+			isSPressed = false;
 
 	}
 

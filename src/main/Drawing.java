@@ -47,7 +47,7 @@ public class Drawing {
 
 	} 
 
-	public static void reset() {
+	public static void reset(boolean earnsPoint) {
 
 		for(int i = 0; i < length.length; i++) {
 
@@ -71,9 +71,9 @@ public class Drawing {
 		main.Main.frogX = parent.pixelWidth / 2;
 		main.Main.frogY = parent.pixelHeight * 17 / 20;
 		
-		points++;
+		if (earnsPoint) points++;
 		
-		if (lives < 5 && points != 0 && points % 5 == 0) lives ++;
+		if (lives < 5 && points % 5 == 0 && earnsPoint) lives ++;
 	}
 	
 	
