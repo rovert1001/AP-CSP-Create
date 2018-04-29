@@ -1,11 +1,11 @@
-package input;
+package main;
 
 import processing.core.PApplet;
 
 
 import static main.Main.*;
 
-public class Hopping {
+public class Movement {
 
 	private static float frogYVel, frogXVel;
 
@@ -17,13 +17,13 @@ public class Hopping {
 	private static long startTime;
 
 
-	public Hopping(PApplet a) {
+	public Movement(PApplet a) {
 		parent = a;
 
 	}
 
 
-	public static void frogMovement() {
+	public void frogMovement() {
 
 		frogYVel = (float) (!isWPressed && !isSPressed || isWPressed && isSPressed ? 0.0 : (isSPressed ? 1.0 : -1.0));
 		frogXVel = (float) (!isDPressed && !isAPressed || isDPressed && isAPressed ? 0.0 : (isDPressed ? 1.0 : -1.0));
@@ -31,11 +31,10 @@ public class Hopping {
 		if (hasHopped && deltaTime < 1000) {
 			deltaTime = System.currentTimeMillis() - startTime;
 		}	
-
-
+		
 		else if (!hasHopped && !(Math.abs(frogXVel) - Math.abs(frogYVel) == 0)) {
-			frogY += frogYVel * (float) parent.pixelHeight / 20;
-			frogX += frogXVel * (float) (parent.pixelWidth / 25.0 * main.Main.widthMultiplier);
+			frogY += frogYVel * (float) parent.pixelHeight / 20.0;
+			frogX += frogXVel * (float) (parent.pixelWidth / 15.0 * main.Main.widthMultiplier);
 
 			startTime = System.currentTimeMillis();
 			hasHopped = true;

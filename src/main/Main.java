@@ -1,32 +1,26 @@
 package main;
 
 import processing.core.PApplet;
-import shapes.Frog;
-import input.Hopping;
-import shapes.Vehicles;
-import java.util.concurrent.ThreadLocalRandom;
+
+import static main.Drawing.reset;
 
 
 public class Main extends PApplet{
-
-	Frog frogOne = new Frog(this);
-	Vehicles cars = new Vehicles(this);
-	Hopping frogMovement = new Hopping(this);
+	
+	Drawing drawing = new Drawing(this);
+	Movement movement = new Movement(this);
+	
 	public static int frogX, frogY;
 
 	public static boolean isAPressed = false;
 	public static boolean isDPressed = false;
 	public static boolean isWPressed = false;
 	public static boolean isSPressed = false;
-	public static boolean isShiftPressed = false;
-	public static boolean isChanging = false;
-	public static boolean isIPressed = false;
-	public static boolean isKPressed = false;
-	public static boolean isJPressed = false;
-	public static boolean isLPressed = false;
 
 
 	public static float widthMultiplier;
+	
+	public static int[] length = new int[8], spacing = new int[8], velocity = new int[8];
 
 	public static void main(String[] args) {
 
@@ -42,58 +36,42 @@ public class Main extends PApplet{
 	}
 
 	public void setup() {
-
-		frogX = pixelWidth / 2;
-		frogY = pixelHeight * 17 / 20;
-
+		
 		widthMultiplier = (float) ((float) pixelWidth / (float) pixelHeight == 4.0 / 3.0 ? 3.0 / 4.0 : 9.0 / 16.0);
-
+		reset();
 	}
 
 	public void draw() {
 
 		background(200);
-		frogOne.frog(frogX, frogY);
-		Hopping.frogMovement();
+		drawing.frog(frogX, frogY);
+		movement.frogMovement();
+		
 
+		for(int i = 0; i < length.length; i++) {
 
-		for(float i = 1; i < 9; i++) {
-
-			int spacing = ThreadLocalRandom.current().nextInt(125, 501);
-			cars.vehicles(i, spacing, pixelWidth / 10);
+			drawing.vehicleDraw(i + 1, length[i], pixelWidth / 10);
 		}
-
-
-
-
+		
 	}
 
+	
+	
 	public void keyPressed() {
 
-		if (keyCode == SHIFT) isShiftPressed = true;
 		if (keyCode == 'A' || keyCode == LEFT) isAPressed = true;
 		if (keyCode == 'D' || keyCode == RIGHT) isDPressed = true;
 		if (keyCode == 'W' || keyCode == UP) isWPressed = true;
 		if (keyCode == 'S' || keyCode == DOWN) isSPressed = true;
-		if (keyCode == 'I') isIPressed = true;
-		if (keyCode == 'K') isKPressed = true;
-		if (keyCode == 'J') isJPressed = true;
-		if (keyCode == 'L') isLPressed = true;
 
 	}
 
 	public void keyReleased() {
 
-		if (keyCode == SHIFT) isShiftPressed = false;
 		if (keyCode == 'A' || keyCode == LEFT) isAPressed = false;
 		if (keyCode == 'D' || keyCode == RIGHT) isDPressed = false;
 		if (keyCode == 'W' || keyCode == UP) isWPressed = false;
 		if (keyCode == 'S' || keyCode == DOWN) isSPressed = false;
-		if (keyCode == 'I') isIPressed = false;
-		if (keyCode == 'K') isKPressed = false;
-		if (keyCode == 'J') isJPressed = false;
-		if (keyCode == 'L') isLPressed = false;
-
 
 	}
 
