@@ -11,6 +11,7 @@ public class Main extends PApplet{
 	Movement movement = new Movement(this);
 	
 	public static int frogX, frogY;
+	public static int points;
 
 	public static boolean isAPressed = false;
 	public static boolean isDPressed = false;
@@ -39,6 +40,7 @@ public class Main extends PApplet{
 		
 		widthMultiplier = (float) ((float) pixelWidth / (float) pixelHeight == 4.0 / 3.0 ? 3.0 / 4.0 : 9.0 / 16.0);
 		reset();
+		points = 0;
 	}
 
 	public void draw() {
@@ -50,8 +52,10 @@ public class Main extends PApplet{
 
 		for(int i = 0; i < length.length; i++) {
 
-			drawing.vehicleDraw(i + 1, length[i], pixelWidth / 10);
+			drawing.vehicleDraw(velocity[i], i + 1, length[i], spacing[i], i);
 		}
+		
+		if (frogY <= pixelWidth * 1 / 40) reset();
 		
 	}
 
