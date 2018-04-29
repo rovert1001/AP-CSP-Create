@@ -2,8 +2,8 @@ package main;
 
 import processing.core.PApplet;
 
-import static main.Drawing.endGame;
 import static main.Main.*;
+import static main.Drawing.reset;
 
 public class Movement {
 
@@ -64,7 +64,12 @@ public class Movement {
 			
 
 			
-			if (xMatch && yMatch) endGame();
+			if (xMatch && yMatch && lives > 0) {
+				lives--;
+				reset();
+				points--;
+			}
+			else if (xMatch && yMatch) System.exit(0);
 
 		}
 

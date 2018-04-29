@@ -5,6 +5,7 @@ import static main.Main.length;
 import static main.Main.spacing;
 import static main.Main.velocity;
 import static main.Main.points;
+import static main.Main.lives;
 import main.Drawing;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -24,7 +25,7 @@ public class Drawing {
 	}
 
 	public void vehicleDraw(float velocity, float yLevel, float width, float spacing, int arrayPos) {
-		parent.fill(153, 255, 51);
+		parent.fill(66, 238, 244);
 		for (float i = - width - spacing; i < (float) parent.pixelWidth * 12.0 / 10.0; i += width + spacing) {
 			parent.rect(1 * i + deltaX[arrayPos], (float) parent.pixelHeight * yLevel / 10, width, (float) parent.pixelHeight / 25);
 		}
@@ -71,11 +72,16 @@ public class Drawing {
 		main.Main.frogY = parent.pixelHeight * 17 / 20;
 		
 		points++;
+		
+		if (lives < 5 && points != 0 && points % 5 == 0) lives ++;
 	}
 	
-	public static void endGame() {
+	
+	public static void texts() {
 		
-		System.exit(0);
+		parent.fill(255);
+		parent.text("Points: " + points, parent.pixelWidth / 20 , parent.pixelHeight * 19 / 20);
+		parent.text("Lives: " + lives, parent.pixelWidth * 9 / 10, parent.pixelHeight * 19 / 20);
 		
 	}
 

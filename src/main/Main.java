@@ -3,6 +3,7 @@ package main;
 import processing.core.PApplet;
 
 import static main.Drawing.reset;
+import static main.Drawing.texts;
 
 
 public class Main extends PApplet{
@@ -11,7 +12,7 @@ public class Main extends PApplet{
 	Movement movement = new Movement(this);
 	
 	public static int frogX, frogY;
-	public static int points;
+	public static int points, lives;
 
 	public static boolean isAPressed = false;
 	public static boolean isDPressed = false;
@@ -41,6 +42,8 @@ public class Main extends PApplet{
 		widthMultiplier = (float) ((float) pixelWidth / (float) pixelHeight == 4.0 / 3.0 ? 3.0 / 4.0 : 9.0 / 16.0);
 		reset();
 		points = 0;
+		lives = 3;
+		textSize(32);
 	}
 
 	public void draw() {
@@ -56,6 +59,8 @@ public class Main extends PApplet{
 		}
 		
 		if (frogY <= pixelWidth * 1 / 40) reset();
+		
+		texts();
 		
 	}
 
